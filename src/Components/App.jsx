@@ -5,7 +5,7 @@ import MovieDetails from "./MovieDetails";
 import SharedLayout from "./SharedLayout";
 
 function App() {
-  return <div>
+  return <>
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />}></Route>
@@ -13,7 +13,7 @@ function App() {
         <Route path="movies/:movieId" element={<MovieDetails />}></Route>
       </Route>
     </Routes>
-  </div>;
+  </>;
 }
 
 export default App;
