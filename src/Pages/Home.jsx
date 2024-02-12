@@ -8,7 +8,6 @@ const Home = () => {
     axios
       .get("/trending/movie/day?language=en-US")
       .then(({ data }) => setCollection(data.results))
-      .then(console.log(collection));
   }, []);
 
   return (
