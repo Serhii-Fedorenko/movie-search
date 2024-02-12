@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
+import { Suspense } from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -10,13 +11,11 @@ const MovieDetails = () => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
 
-  console.log(movie)
-
   return (
     <div>
       {movie && (
         <div>
-          <h2>{movie.original_title}</h2>
+          <h2>{movie.title}</h2>
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.original_title}
@@ -34,6 +33,13 @@ const MovieDetails = () => {
           </div>
         </div>
       )}
+      <nav>
+        <Link to="cast">Cast</Link>
+        <Link to="reviews">Reviews</Link>
+      </nav>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

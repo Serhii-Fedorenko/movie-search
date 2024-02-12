@@ -4,6 +4,8 @@ import Movies from "../Pages/Movies";
 import NotFound from "../Pages/NotFound";
 import MovieDetails from "./MovieDetails";
 import SharedLayout from "./SharedLayout";
+import Cast from "./Cast";
+import Reviews from "./Reviews";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
@@ -17,7 +19,10 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />}></Route>
           <Route path="movies" element={<Movies />}></Route>
-          <Route path="movies/:movieId" element={<MovieDetails />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews />}></Route>
+          </Route>
         </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
