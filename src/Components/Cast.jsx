@@ -12,7 +12,6 @@ const Cast = () => {
       .then(({ data }) => setCastList(data.cast));
   }, [movieId]);
 
-  console.log(castList);
   return (
     <div>
       <ul>

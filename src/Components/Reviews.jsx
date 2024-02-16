@@ -1,5 +1,29 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 const Reviews = () => {
-  return <div>Reviews page</div>;
+  const [reviewList, setReviewList] = useState([]);
+  const { movieId } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`/movie/${movieId}/reviews`)
+      .then(({ data }) => setReviewList(data.results));
+  }, [movieId]);
+  console.log(reviewList);
+  return (
+    <div>
+      <ul>
+        {reviewList?.map((review) => (
+          <li key={review.id}>
+            <p>{review.author}</p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Reviews;
