@@ -32,8 +32,6 @@ const Movies = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(collection);
-
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
