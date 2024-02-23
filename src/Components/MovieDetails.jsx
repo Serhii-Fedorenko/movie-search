@@ -1,11 +1,13 @@
-import { useParams, Link, Outlet } from "react-router-dom";
-import { Suspense } from "react";
+import { useEffect, useState, Suspense, useRef } from "react";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? "/movies");
+  console.log(location.state)
 
   useEffect(() => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
@@ -13,6 +15,7 @@ const MovieDetails = () => {
 
   return (
     <div>
+      <Link to={backLinkHref.current}>Back to previous page</Link>
       {movie && (
         <div>
           <h2>{movie.title}</h2>

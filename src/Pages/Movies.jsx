@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [collection, setCollection] = useState([]);
   const query = searchParams.get("query") ?? "";
+  const location = useLocation();
 
   const updateQueryString = (e) => {
     setSearchParams(e.target.value !== '' ? {query: e.target.value} : {});
@@ -41,7 +42,7 @@ const Movies = () => {
       <ul>
         {collection?.map((movie) => (
           <li key={movie.id}>
-            <Link to={`${movie.id}`}>
+            <Link to={`${movie.id}`} state={{from: location}}>
               <h3>{movie.title}</h3>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
