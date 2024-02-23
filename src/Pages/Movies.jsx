@@ -8,7 +8,7 @@ const Movies = () => {
   const query = searchParams.get("query") ?? "";
 
   const updateQueryString = (e) => {
-    setSearchParams({ query: e.target.value });
+    setSearchParams(e.target.value !== '' ? {query: e.target.value} : {});
   };
 
   const fetchMovies = (query) => {
