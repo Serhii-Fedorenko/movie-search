@@ -7,11 +7,12 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? "/movies");
-  console.log(location.state)
 
   useEffect(() => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
+
+  console.log(movie)
 
   return (
     <div>

@@ -33,6 +33,10 @@ const Movies = () => {
     // eslint-disable-next-line
   }, []);
 
+  const sortedMovies = (collection) => {
+    return collection.sort((a,b) => b.vote_count - a.vote_count)
+  }
+
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
@@ -40,7 +44,7 @@ const Movies = () => {
         <button type="submit">Search</button>
       </form>
       <ul>
-        {collection?.map((movie) => (
+        {sortedMovies(collection)?.map((movie) => (
           <li key={movie.id}>
             <Link to={`${movie.id}`} state={{from: location}}>
               <h3>{movie.title}</h3>
