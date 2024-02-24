@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { MovieBox, MovieCard, MovieTitle, Link } from "../Components/Movies.styled";
 
 const Home = () => {
   const [collection, setCollection] = useState([]);
@@ -8,18 +9,25 @@ const Home = () => {
   useEffect(() => {
     axios
       .get("/trending/movie/day?language=en-US")
-      .then(({ data }) => setCollection(data.results))
+      .then(({ data }) => setCollection(data.results));
   }, []);
 
   return (
     <div>
-      <ul>
+      <MovieBox>
         {collection?.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{from: location}}>{movie.title}</Link>
-          </li>
+          <MovieCard key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              <MovieTitle>{movie.title}</MovieTitle>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+                width="300"
+              />
+            </Link>
+          </MovieCard>
         ))}
-      </ul>
+      </MovieBox>
     </div>
   );
 };
