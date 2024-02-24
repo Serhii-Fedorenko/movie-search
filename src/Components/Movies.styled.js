@@ -21,7 +21,6 @@ export const MovieCard = styled.li`
 `;
 
 export const MovieTitle = styled.h3`
-  text-decoration: none;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 15px;

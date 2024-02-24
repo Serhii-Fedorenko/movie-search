@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
+import { MovieBox, MovieCard, MovieTitle, Link } from "../Components/Movies.styled";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,20 +44,20 @@ const Movies = () => {
         <input type="text" value={query} onChange={updateQueryString} />
         <button type="submit">Search</button>
       </form>
-      <ul>
+      <MovieBox>
         {sortedMovies(collection)?.map((movie) => (
-          <li key={movie.id}>
+          <MovieCard key={MovieCard.id}>
             <Link to={`${movie.id}`} state={{ from: location }}>
-              <h3>{movie.title}</h3>
+              <MovieTitle>{movie.title}</MovieTitle>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 width="300"
               />
             </Link>
-          </li>
+          </MovieCard>
         ))}
-      </ul>
+      </MovieBox>
     </div>
   );
 };
