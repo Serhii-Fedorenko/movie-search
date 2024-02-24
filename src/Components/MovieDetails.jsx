@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense, useRef } from "react";
-import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import { useParams, Outlet, useLocation } from "react-router-dom";
 import axios from "axios";
+import { CardWrap, Button, LeftSide, RightSide } from "./MovieCard.styled";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
@@ -12,34 +13,42 @@ const MovieDetails = () => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
 
-  console.log(movie)
+  console.log(movie);
 
   return (
     <div>
-      <Link to={backLinkHref.current}>Back to previous page</Link>
+      <Button to={backLinkHref.current}>Back to previous page</Button>
       {movie && (
-        <div>
-          <h2>{movie.title}</h2>
-          <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.original_title}
-            width="300"
-          />
-          <div>
-            <h2>{movie.original_title}</h2>
+        <CardWrap>
+          <LeftSide>
+            <h2>{movie.title}</h2>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.original_title}
+              width="300"
+            />
+          </LeftSide>
+          <RightSide>
+            <h4>{movie.tagline}</h4>
             <p>{movie.overview}</p>
-
             <ul>
               {movie.genres.map((genre) => (
                 <li key={genre.name}>{genre.name}</li>
               ))}
             </ul>
-          </div>
-        </div>
+            <p>${movie.budget}</p>
+            <ul>
+              {movie.production_countries.map((country) => (
+                <li key={country.name}>{country.name}</li>
+              ))}
+            </ul>
+            <p>{movie.runtime} min</p>
+          </RightSide>
+        </CardWrap>
       )}
       <nav>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <Button to="cast">Cast</Button>
+        <Button to="reviews">Reviews</Button>
       </nav>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
