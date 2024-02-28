@@ -7,7 +7,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = useRef(location.state?.from ?? "/movies");
+  const backLinkHref = useRef(location.state?.from ?? '/movie');
 
   useEffect(() => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
