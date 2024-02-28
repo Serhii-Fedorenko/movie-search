@@ -4,6 +4,7 @@ div {
     text-decoration: none;
     list-style: none;
     width: 40%;
+    height: auto;
     color: #232323;
     margin-bottom: 30px;
     border-radius: 4px;
@@ -13,8 +14,10 @@ div {
             margin-right: 10px;
         }
 
-        & > li {
+        & > img {
             display: block;
+            width: 100px;
+            height: auto;
         }
 
 

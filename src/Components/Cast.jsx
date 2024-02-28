@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { ArtistCard, CastList } from "./MovieCard.styled";
 
 const Cast = () => {
   const [castList, setCastList] = useState([]);
@@ -14,19 +15,19 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <CastList>
         {castList &&
           castList.map((actor) => (
-            <li key={actor.id}>
+            <ArtistCard key={actor.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w300/${actor.profile_path}`}
                 alt={actor.name}
               />
               <p>{actor.character}</p>
               <p>{actor.name}</p>
-            </li>
+            </ArtistCard>
           ))}
-      </ul>
+      </CastList>
     </div>
   );
 };
