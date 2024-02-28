@@ -38,3 +38,9 @@ export const Link = styled(NavLink)`
     height: auto;
 }
 `;
+
+export const ButtonBox = styled.div`
+display: flex;
+justify-content:center;
+margin: 40px;
+`

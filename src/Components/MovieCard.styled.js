@@ -23,6 +23,7 @@ export const Button = styled(NavLink)`
   font-weight: 500;
   border-radius: 4px;
   border: black solid 1px;
+  margin-right: 20px;
 `;
 
 export const CastList = styled.ul`

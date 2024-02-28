@@ -1,25 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   MovieBox,
   MovieCard,
   MovieTitle,
   Link,
+  ButtonBox,
 } from "../Components/Movies.styled";
+import { Button } from "../Components/MovieCard.styled";
 
 const Home = () => {
   const [collection, setCollection] = useState([]);
   const [page, setPage] = useState(1)
   const location = useLocation();
-  const pageRef = useRef(page)
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
       .get(`/trending/movie/day?page=${page}&language=en-US`)
       .then(({ data }) => setCollection(data.results));
-      pageRef.current = page
-  }, [page]);
+      navigate(`/?page=${page}`)
+  }, [page, navigate]);
 
   const handleNextButtonClick = (e) => {
     e.preventDefault();
@@ -47,10 +49,10 @@ const Home = () => {
           </MovieCard>
         ))}
       </MovieBox>
-        <div>
-          <button type="button" onClick={handlePrevButtonClick}>prev</button>
-          <button type="button" onClick={handleNextButtonClick}>next</button>
-        </div>
+        <ButtonBox>
+          <Button type="button" onClick={handlePrevButtonClick}>prev</Button>
+          <Button type="button" onClick={handleNextButtonClick}>next</Button>
+        </ButtonBox>
     </div>
   );
 };
