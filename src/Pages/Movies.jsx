@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import { MovieBox, MovieCard, MovieTitle, Link } from "../Components/Movies.styled";
+import {
+  MovieBox,
+  MovieCard,
+  MovieTitle,
+  Link,
+} from "../Components/Movies.styled";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +23,8 @@ const Movies = () => {
       .get(
         `/search/movie?query=${query}&include_adult=false&language=en-US&page=1`
       )
-      .then(({ data }) => setCollection(data.results));
+      .then(({ data }) => setCollection(data.results))
+      .catch((error) => console.log(error));
   };
 
   const handleFormSubmit = (e) => {

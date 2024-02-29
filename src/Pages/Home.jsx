@@ -12,26 +12,27 @@ import { Button } from "../Components/MovieCard.styled";
 
 const Home = () => {
   const [collection, setCollection] = useState([]);
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`/trending/movie/day?page=${page}&language=en-US`)
-      .then(({ data }) => setCollection(data.results));
-      navigate(`/?page=${page}`)
+      .then(({ data }) => setCollection(data.results))
+      .catch((error) => console.log(error));
+    navigate(`/?page=${page}`);
   }, [page, navigate]);
 
   const handleNextButtonClick = (e) => {
     e.preventDefault();
-    setPage(page+1)
-  }
+    setPage(page + 1);
+  };
 
   const handlePrevButtonClick = (e) => {
     e.preventDefault();
-    setPage(page-1)
-  }
+    setPage(page - 1);
+  };
 
   return (
     <div>
@@ -49,10 +50,14 @@ const Home = () => {
           </MovieCard>
         ))}
       </MovieBox>
-        <ButtonBox>
-          <Button type="button" onClick={handlePrevButtonClick}>prev</Button>
-          <Button type="button" onClick={handleNextButtonClick}>next</Button>
-        </ButtonBox>
+      <ButtonBox>
+        <Button type="button" onClick={handlePrevButtonClick}>
+          prev
+        </Button>
+        <Button type="button" onClick={handleNextButtonClick}>
+          next
+        </Button>
+      </ButtonBox>
     </div>
   );
 };
