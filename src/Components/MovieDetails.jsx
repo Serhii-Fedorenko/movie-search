@@ -8,8 +8,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? "/movie");
-  console.log(location);
-
+  console.log(movie)
   useEffect(() => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
@@ -30,12 +29,19 @@ const MovieDetails = () => {
           <RightSide>
             <h4>{movie.tagline}</h4>
             <p>{movie.overview}</p>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              alt={movie.original_title}
+              width="500"
+            />
+            <p>Release Date: {movie.release_date}</p>
+            <p>Genres</p>
             <ul>
               {movie.genres.map((genre) => (
                 <li key={genre.name}>{genre.name}</li>
               ))}
             </ul>
-            <p>${movie.budget}</p>
+            <p>Budget: ${movie.budget}</p>
             <ul>
               {movie.production_countries.map((country) => (
                 <li key={country.name}>{country.name}</li>
