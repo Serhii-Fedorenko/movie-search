@@ -52,7 +52,7 @@ const Movies = () => {
       </form>
       <MovieBox>
         {sortedMovies(collection)?.map((movie) => (
-          <MovieCard key={MovieCard.id}>
+          <MovieCard key={movie.id}>
             <Link to={`${movie.id}`} state={{ from: location }}>
               <MovieTitle>{movie.title}</MovieTitle>
               <img

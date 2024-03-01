@@ -7,6 +7,7 @@ import SharedLayout from "./SharedLayout";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
 import axios from "axios";
+import ArtistDetails from "./ArtistDetails";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.headers.common["Authorization"] =
@@ -23,6 +24,10 @@ function App() {
             <Route path="cast" element={<Cast />}></Route>
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
+          <Route
+            path="movies/:movieId/cast/:artistName"
+            element={<ArtistDetails />}
+          ></Route>
         </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

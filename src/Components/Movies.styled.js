@@ -30,6 +30,7 @@ white-space: nowrap;
 max-width: 100%;
 width: 180px;
 `;
+
 export const Link = styled(NavLink)`
   text-decoration: none;
   & > img {
