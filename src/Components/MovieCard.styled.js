@@ -13,6 +13,8 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   width: 40%;
+  border-left: #232323 solid 1px;
+  padding-left: 30px;
 `;
 
 export const Button = styled(NavLink)`

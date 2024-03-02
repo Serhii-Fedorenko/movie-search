@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { ArtistCard, CastList } from "./MovieCard.styled";
 import {Link} from "../Components/Movies.styled"
@@ -7,6 +7,7 @@ import {Link} from "../Components/Movies.styled"
 const Cast = () => {
   const [castList, setCastList] = useState([]);
   const { movieId } = useParams();
+  const location = useLocation()
 
   useEffect(() => {
     axios
@@ -19,7 +20,7 @@ const Cast = () => {
       <CastList>
         {castList &&
           castList.map((actor) => (
-            <Link to={`${actor.name}`}>
+            <Link to={`${actor.name}`} state={{ from: location }}>
               {/* {console.log(actor.name)} */}
               <ArtistCard key={actor.id}>
                 <img
