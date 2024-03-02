@@ -12,7 +12,7 @@ export const LeftSide = styled.div`
 `;
 
 export const RightSide = styled.div`
-  width: 40%;
+  width: 50%;
   border-left: #232323 solid 1px;
   padding-left: 30px;
 `;

@@ -31,7 +31,7 @@ max-width: 100%;
 width: 180px;
 `;
 
-export const Link = styled(NavLink)`
+export const CustomLink = styled(NavLink)`
   text-decoration: none;
   & > img {
     display: block;

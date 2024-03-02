@@ -5,7 +5,7 @@ import {
   MovieBox,
   MovieCard,
   MovieTitle,
-  Link,
+  CustomLink,
   ButtonBox,
 } from "../Components/Movies.styled";
 import { Button } from "../Components/MovieCard.styled";
@@ -39,14 +39,14 @@ const Home = () => {
       <MovieBox>
         {collection?.map((movie) => (
           <MovieCard key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <CustomLink to={`/movies/${movie.id}`} state={{ from: location }}>
               <MovieTitle>{movie.title}</MovieTitle>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 width="300"
               />
-            </Link>
+            </CustomLink>
           </MovieCard>
         ))}
       </MovieBox>

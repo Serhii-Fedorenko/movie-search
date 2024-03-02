@@ -12,7 +12,6 @@ const MovieDetails = () => {
   useEffect(() => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
-  console.log(location)
 
   return (
     <div>

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Button, CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
+import { CustomLink, MovieBox, MovieCard } from "./Movies.styled";
 
 const ArtistDetails = () => {
   const [artist, setArtist] = useState(null);
@@ -17,8 +18,6 @@ const ArtistDetails = () => {
       .catch((error) => console.log(error));
   }, [artistName]);
 
-  console.log(location);
-
   return (
     <div>
       <Button to={backLinkHref.current}>Back to previous page</Button>
@@ -32,18 +31,23 @@ const ArtistDetails = () => {
             />
           </LeftSide>
           <RightSide>
-            <ul style={{display: 'flex', flexWrap: 'wrap', listStyle: 'none'}}>
+            <MovieBox>
               {artist.known_for.map((item) => (
-                <li style={{width: 'fit-content', marginRight: '20px'}}>
-                  <h4>{item.title}</h4>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
-                    alt={item.title}
-                    width='200'
-                  />
-                </li>
+                <CustomLink
+                  to={`/movies/${item.id}`}
+                  state={{ from: location }}
+                >
+                  <MovieCard>
+                    <h4>{item.title}</h4>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
+                      alt={item.title}
+                      width="200"
+                    />
+                  </MovieCard>
+                </CustomLink>
               ))}
-            </ul>
+            </MovieBox>
           </RightSide>
         </CardWrap>
       )}

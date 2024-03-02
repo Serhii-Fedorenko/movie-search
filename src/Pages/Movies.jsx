@@ -5,7 +5,7 @@ import {
   MovieBox,
   MovieCard,
   MovieTitle,
-  Link,
+  CustomLink,
 } from "../Components/Movies.styled";
 
 const Movies = () => {
@@ -53,14 +53,14 @@ const Movies = () => {
       <MovieBox>
         {sortedMovies(collection)?.map((movie) => (
           <MovieCard key={movie.id}>
-            <Link to={`${movie.id}`} state={{ from: location }}>
+            <CustomLink to={`${movie.id}`} state={{ from: location }}>
               <MovieTitle>{movie.title}</MovieTitle>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 width="300"
               />
-            </Link>
+            </CustomLink>
           </MovieCard>
         ))}
       </MovieBox>
