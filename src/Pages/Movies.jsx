@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import { BsSearch } from "react-icons/bs";
 import {
   MovieBox,
   MovieCard,
   MovieTitle,
   CustomLink,
+  CustomForm,
 } from "../Components/Movies.styled";
+import { Button } from "../Components/MovieCard.styled";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,10 +49,12 @@ const Movies = () => {
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit}>
+      <CustomForm onSubmit={handleFormSubmit}>
         <input type="text" value={query} onChange={updateQueryString} />
-        <button type="submit">Search</button>
-      </form>
+        <Button type="submit">
+          <BsSearch />
+        </Button>
+      </CustomForm>
       <MovieBox>
         {sortedMovies(collection)?.map((movie) => (
           <MovieCard key={movie.id}>

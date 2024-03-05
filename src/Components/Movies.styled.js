@@ -21,14 +21,14 @@ export const MovieCard = styled.li`
 `;
 
 export const MovieTitle = styled.h3`
-font-size: 16px;
-font-weight: bold;
-margin-bottom: 15px;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-max-width: 100%;
-width: 180px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  width: 180px;
 `;
 
 export const CustomLink = styled(NavLink)`
@@ -37,11 +37,19 @@ export const CustomLink = styled(NavLink)`
     display: block;
     width: 200px;
     height: auto;
-}
+  }
 `;
 
 export const ButtonBox = styled.div`
-display: flex;
-justify-content:center;
-margin: 40px;
-`
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+`;
+
+export const CustomForm = styled.form`
+  display: flex;
+
+  & > input {
+    font-size: 16px;
+  }
+`;
