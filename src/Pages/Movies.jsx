@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import { BsSearch } from "react-icons/bs";
-import {
-  MovieBox,
-  MovieCard,
-  MovieTitle,
-  CustomLink,
-  CustomForm,
-} from "../Components/Movies.styled";
-import { Button } from "../Components/MovieCard.styled";
+import SearchForm from "../Components/SearchForm";
+import MovieContainer from "../Components/MovieContainer";
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -48,28 +41,18 @@ const Movies = () => {
   };
 
   return (
-    <div>
-      <CustomForm onSubmit={handleFormSubmit}>
-        <input type="text" value={query} onChange={updateQueryString} />
-        <Button type="submit">
-          <BsSearch />
-        </Button>
-      </CustomForm>
-      <MovieBox>
-        {sortedMovies(collection)?.map((movie) => (
-          <MovieCard key={movie.id}>
-            <CustomLink to={`${movie.id}`} state={{ from: location }}>
-              <MovieTitle>{movie.title}</MovieTitle>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                width="300"
-              />
-            </CustomLink>
-          </MovieCard>
-        ))}
-      </MovieBox>
-    </div>
+    <>
+      <SearchForm
+        query={query}
+        updateQueryString={updateQueryString}
+        handleFormSubmit={handleFormSubmit}
+      />
+      <MovieContainer
+        sortedMovies={sortedMovies}
+        location={location}
+        collection={collection}
+      />
+    </>
   );
 };
 
