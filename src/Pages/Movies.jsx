@@ -17,7 +17,7 @@ const Movies = () => {
   const fetchMovies = (query) => {
     axios
       .get(
-        `/search/movie?query=${query}&include_adult=false&language=en-US&page=1`
+        `/search/movie?query=${query}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc`
       )
       .then(({ data }) => setCollection(data.results))
       .catch((error) => console.log(error));

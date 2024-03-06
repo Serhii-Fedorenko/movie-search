@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  MovieBox,
-  MovieCard,
-  MovieTitle,
-  CustomLink,
-  ButtonBox,
-} from "../Components/Movies.styled";
-import { Button } from "../Components/MovieCard.styled";
+import HomePageContainer from "../Components/HomePageContainer";
+import ButtonContainer from "../Components/ButtonContainer";
 
 const Home = () => {
   const [collection, setCollection] = useState([]);
@@ -35,30 +29,13 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <MovieBox>
-        {collection?.map((movie) => (
-          <MovieCard key={movie.id}>
-            <CustomLink to={`/movies/${movie.id}`} state={{ from: location }}>
-              <MovieTitle>{movie.title}</MovieTitle>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                width="300"
-              />
-            </CustomLink>
-          </MovieCard>
-        ))}
-      </MovieBox>
-      <ButtonBox>
-        <Button type="button" onClick={handlePrevButtonClick}>
-          prev
-        </Button>
-        <Button type="button" onClick={handleNextButtonClick}>
-          next
-        </Button>
-      </ButtonBox>
-    </div>
+    <>
+      <HomePageContainer collection={collection} location={location} />
+      <ButtonContainer
+        handleNextButtonClick={handleNextButtonClick}
+        handlePrevButtonClick={handlePrevButtonClick}
+      />
+    </>
   );
 };
 

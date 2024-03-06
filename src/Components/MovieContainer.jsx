@@ -1,6 +1,7 @@
 import { CustomLink, MovieBox, MovieCard, MovieTitle } from "./Movies.styled";
 
 const MovieContainer = ({ sortedMovies, location, collection }) => {
+
   return (
     <MovieBox>
       {sortedMovies(collection)?.map((movie) => (
