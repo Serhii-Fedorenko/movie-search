@@ -16,7 +16,7 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <>
       <CastList>
         {castList &&
           castList.map((actor) => (
@@ -33,7 +33,7 @@ const Cast = () => {
             </CustomLink>
           ))}
       </CastList>
-    </div>
+    </>
   );
 };
 

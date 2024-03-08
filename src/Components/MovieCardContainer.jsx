@@ -21,6 +21,7 @@ const MovieCardContainer = ({ movie, backLinkHref }) => {
             alt={movie.original_title}
             width="500"
           />
+          <p>Rating: {movie.vote_average.toFixed(1)}</p>
           <p>Release Date: {movie.release_date}</p>
           <p>Genres</p>
           <ul>

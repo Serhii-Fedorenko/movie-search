@@ -13,7 +13,7 @@ const Reviews = () => {
   }, [movieId]);
   console.log(reviewList);
   return (
-    <div>
+    <>
       <ul>
         {reviewList?.map((review) => (
           <li key={review.id}>
@@ -22,7 +22,7 @@ const Reviews = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

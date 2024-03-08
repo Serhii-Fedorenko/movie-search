@@ -19,7 +19,7 @@ const ArtistDetails = () => {
   }, [artistName]);
 
   return (
-    <div>
+    <>
       <Button to={backLinkHref.current}>Back to previous page</Button>
       {artist && (
         <CardWrap>
@@ -51,7 +51,7 @@ const ArtistDetails = () => {
           </RightSide>
         </CardWrap>
       )}
-    </div>
+    </>
   );
 };
 

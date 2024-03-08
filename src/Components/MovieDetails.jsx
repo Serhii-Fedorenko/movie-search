@@ -13,15 +13,17 @@ const MovieDetails = () => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
 
+  console.log(movie)
+
   return (
-    <div>
+    <>
       {movie && (
         <MovieCardContainer movie={movie} backLinkHref={backLinkHref} />
       )}
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </>
   );
 };
 
