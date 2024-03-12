@@ -13,8 +13,6 @@ const MovieDetails = () => {
     axios.get(`/movie/${movieId}`).then(({ data }) => setMovie(data));
   }, [movieId]);
 
-  console.log(movie)
-
   return (
     <>
       {movie && (
