@@ -34,6 +34,7 @@ const ArtistDetails = () => {
             <MovieBox>
               {artist.known_for.map((item) => (
                 <CustomLink
+                key={item.id}
                   to={`/movies/${item.id}`}
                   state={{ from: location }}
                 >

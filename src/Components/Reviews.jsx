@@ -11,7 +11,6 @@ const Reviews = () => {
       .get(`/movie/${movieId}/reviews`)
       .then(({ data }) => setReviewList(data.results));
   }, [movieId]);
-  console.log(reviewList);
   return (
     <>
       <ul>
