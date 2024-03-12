@@ -1,6 +1,15 @@
 import { Button, CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
 
 const MovieCardContainer = ({ movie, backLinkHref }) => {
+  let timerId = null;
+  const scrollDown = () => {
+    timerId = setTimeout(() => {
+      window.scrollTo({ top: 600, behavior: "smooth" });
+    }, 100);
+  };
+  const stopScrollDown = () => {
+    clearTimeout(timerId)
+  }
   return (
     <>
       <Button to={backLinkHref.current}>Back to previous page</Button>
@@ -39,8 +48,8 @@ const MovieCardContainer = ({ movie, backLinkHref }) => {
         </RightSide>
       </CardWrap>
       <nav>
-        <Button to="cast">Cast</Button>
-        <Button to="reviews">Reviews</Button>
+        <Button to="cast" onClick={scrollDown} onMouseUp={stopScrollDown}>Cast</Button>
+        <Button to="reviews" onClick={scrollDown} onMouseUp={stopScrollDown}>Reviews</Button>
       </nav>
     </>
   );
