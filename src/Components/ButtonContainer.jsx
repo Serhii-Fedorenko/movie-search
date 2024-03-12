@@ -1,5 +1,4 @@
-import { Button } from "./MovieCard.styled";
-import { ButtonBox } from "./Movies.styled";
+import { ButtonBox, Button } from "./Movies.styled";
 
 const ButtonContainer = ({ handleNextButtonClick, handlePrevButtonClick }) => {
   return (

@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { Button, CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
-import { CustomLink, MovieBox, MovieCard } from "./Movies.styled";
+import { CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
+import { Button, CustomLink, MovieBox, MovieCard } from "./Movies.styled";
 
 const ArtistDetails = () => {
   const [artist, setArtist] = useState(null);

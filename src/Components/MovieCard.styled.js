@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 
 export const CardWrap = styled.div`
   display: flex;
@@ -15,17 +14,6 @@ export const RightSide = styled.div`
   width: 50%;
   border-left: #232323 solid 1px;
   padding-left: 30px;
-`;
-
-export const Button = styled(NavLink)`
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #232323;
-  font-weight: 500;
-  border-radius: 4px;
-  border: black solid 1px;
-  margin-right: 20px;
 `;
 
 export const CastList = styled.ul`

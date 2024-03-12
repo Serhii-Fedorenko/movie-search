@@ -1,4 +1,5 @@
-import { Button, CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
+import { CardWrap, LeftSide, RightSide } from "./MovieCard.styled";
+import { Button } from "./Movies.styled";
 
 const MovieCardContainer = ({ movie, backLinkHref }) => {
   let timerId = null;

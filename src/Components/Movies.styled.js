@@ -46,6 +46,17 @@ export const ButtonBox = styled.div`
   margin: 40px;
 `;
 
+export const Button = styled(NavLink)`
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #232323;
+  font-weight: 500;
+  border-radius: 4px;
+  border: black solid 1px;
+  margin-right: 20px;
+`;
+
 export const CustomForm = styled.form`
   display: flex;
 
