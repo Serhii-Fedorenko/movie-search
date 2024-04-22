@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../Pages/Home";
-import Movies from "../Pages/Movies";
-import NotFound from "../Pages/NotFound";
-import MovieDetails from "./MovieDetails";
-import SharedLayout from "./SharedLayout";
-import Cast from "./Cast";
-import Reviews from "./Reviews";
+import { lazy } from "react";
 import axios from "axios";
-import ArtistDetails from "./ArtistDetails";
+import SharedLayout from "./SharedLayout";
+const Home = lazy(() => import("../Pages/Home"))
+const Movies = lazy(() => import("../Pages/Movies"))
+const NotFound = lazy(() => import("../Pages/NotFound"))
+const Cast = lazy(() => import("./Cast"))
+const Reviews = lazy(() => import("./Reviews"))
+const ArtistDetails = lazy(() => import("./ArtistDetails"))
+const MovieDetails = lazy(() => import("./MovieDetails"))
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 axios.defaults.headers.common["Authorization"] =
